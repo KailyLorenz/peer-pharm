@@ -17,10 +17,12 @@ import {MovieComponent} from './dashboard/movie/movie.component'
 import {TooltipDirective} from './shared/tooltip.directive'
 import {ToastComponent} from './shared/toast/toast.component'
 import {ToastService} from './shared/toast/toast.service'
+import {WelcomeComponent} from './welcome/welcome.component'
 
 @NgModule({
   declarations: [
     AppComponent,
+    WelcomeComponent,
     SidenavListComponent,
     DashboardComponent,
     ActionsComponent,
