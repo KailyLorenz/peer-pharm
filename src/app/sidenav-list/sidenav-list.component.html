@@ -1,0 +1,51 @@
+<div class="h-100">
+  <div class="logo d-flex justify-content-center align-items-center">
+    <h3 class="text-white flex-wrap">Peer Pharm</h3>
+  </div>
+  <nav class="navbar h-100" data-bs-theme="dark">
+    <div class="w-100">
+      <ul class="navbar-nav me-auto">
+        <li
+          class="nav-item cursor-pointer px-4 p-2 d-flex align-items-center"
+          (click)="setFilter(movie.type)"
+          *ngFor="let movie of movies | async"
+          [ngClass]="{active: activeFilter === movie.type}"
+        >
+          <span [ngSwitch]="movie.type">
+            <i *ngSwitchCase="'movie'" class="bi bi-film text-white me-3"></i>
+            <i *ngSwitchCase="'series'" class="bi bi-tv text-white me-3"></i>
+            <i
+              *ngSwitchCase="'game'"
+              class="bi bi-controller text-white me-3"
+            ></i>
+            <i
+              *ngSwitchCase="'all'"
+              class="bi bi-border-all text-white me-3"
+            ></i>
+          </span>
+          <a
+            class="nav-link cursor-pointer nav-link-hover"
+            [ngClass]="{active: activeFilter === movie.type}"
+            >{{ movie.type | titlecase }}
+            {{ movie.type === 'all' ? 'categories' : '' }} - {{ movie.count }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="d-flex justify-content-center w-100">
+      <button
+        [disabled]="isViewing"
+        class="btn btn-warning my-2 my-sm-0"
+        appTooltip="toggle view list movies"
+        (click)="changeViewListMovies()"
+      >
+        Change view
+        <i
+          class="bi ms-2"
+          [class.bi-view-list]="isTable"
+          [class.bi-grid]="!isTable"
+        ></i>
+      </button>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,18 @@
+<div class="col-11 py-4">
+  <div *ngIf="isLoading" class="d-flex justify-content-center">
+    <app-spinner></app-spinner>
+  </div>
+  <div class="row m-0" *ngIf="!isLoading">
+    <div
+      *ngFor="let movie of filteredMovies | sort: 'title':sortDirection"
+      [class]="!isViewTable ? 'col-12' : 'col-6'"
+      class="p-2 fixed-row"
+    >
+      <app-movie
+        [movie]="movie"
+        [filter]="filter"
+        [isMovieDetails]="false"
+      ></app-movie>
+    </div>
+  </div>
+</div>

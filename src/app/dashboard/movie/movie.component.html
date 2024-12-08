@@ -1,0 +1,73 @@
+<div class="card" [ngClass]="{'w-75': isMovieDetails}">
+  <div class="row">
+    <div
+      [routerLink]="!isMovieDetails ? ['/movies', movie.imdbID] : null"
+      [queryParams]="{ filter }"
+      class="col-auto pe-0 cursor-pointer zoom-effect"
+    >
+      <img
+        *ngIf="!errorLoadingMovie[movie.imdbID]"
+        [src]="movie.poster"
+        class="img-fluid rounded-start cursor-pointer m-3"
+        [alt]="movie.title"
+        style="width: 150px; height: 200px; object-fit: cover"
+        (error)="onImageError($event, movie.imdbID)"
+      />
+      <div
+        *ngIf="errorLoadingMovie[movie.imdbID]"
+        class="bg-dark rounded-start d-flex align-items-center
+          justify-content-center cursor-pointer m-3"
+        style="width: 150px; height: 200px"
+      >
+        <p class="text-center text-white">Poster not available</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card-body h-100 d-flex flex-column justify-content-between">
+        <div *ngIf="editingMovieId === movie.imdbID; else displayMode">
+          <input
+            class="form-control"
+            #inputElement
+            type="text"
+            [(ngModel)]="editableTitle"
+            (blur)="saveChanges(movie)"
+            (keydown.enter)="saveChanges(movie)"
+            (keydown.esc)="cancelEditing()"
+          />
+          <small class="text-danger" *ngIf="errorMessage">{{
+            errorMessage
+          }}</small>
+        </div>
+        <ng-template #displayMode>
+          <h5
+            class="text-primary-emphasis cursor-pointer"
+            [ngClass]="{
+              blur: editingMovieId !== null && editingMovieId === movie.imdbID
+            }"
+            (dblclick)="enableEditing(movie)"
+            appTooltip="double-click to edit the title"
+          >
+            {{ movie.title }}
+          </h5>
+        </ng-template>
+        <div>
+          <p class="card-title text-primary mt-4">
+            Category: <span>{{ movie.type }}</span>
+          </p>
+          <p class="card-title text-primary mb-0">
+            Release date: <span>{{ movie.year | date: 'yyyy' }}</span>
+          </p>
+
+          <a
+            *ngIf="!isMovieDetails"
+            class="d-flex text-warning cursor-pointer link-hover mt-2"
+            [routerLink]="['/movies', movie.imdbID]"
+            [queryParams]="{ filter }"
+          >
+            Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

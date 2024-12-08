@@ -1,0 +1,10 @@
+.sidenav-bar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+.dashboard {
+  height: 100vh;
+  overflow-y: auto;
+}

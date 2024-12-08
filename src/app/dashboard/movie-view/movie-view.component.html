@@ -1,0 +1,16 @@
+<div class="">
+  <ol class="breadcrumb bg-white align-items-center ps-5">
+    <li class="breadcrumb-item cursor-pointer">
+      <a (click)="goBack()" class="text-warning cursor-pointer link-hover">
+        Back
+      </a>
+    </li>
+    <li class="breadcrumb-item active">{{ movie.type }}: {{ movie.title }}</li>
+  </ol>
+  <app-movie
+    [movie]="movie"
+    [isMovieDetails]="true"
+    class="d-flex justify-content-center col-12 py-4"
+  >
+  </app-movie>
+</div>

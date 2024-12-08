@@ -1,0 +1,28 @@
+h5:hover {
+  background-color: #f0f0f0;
+}
+
+h5.blur {
+  background-color: #f0f0f0;
+}
+
+.fixed-row {
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.card {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.zoom-effect img,
+.zoom-effect div {
+  transition: transform 0.5s ease;
+}
+
+.zoom-effect img:hover,
+.zoom-effect div:hover {
+  transform: scale(1.03);
+}
