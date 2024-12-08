@@ -1,1 +1,1 @@
-echo "web: http-server dist/peerpharm -p $PORT" > Procfile
+web: http-server dist/peerpharm -p $PORT
