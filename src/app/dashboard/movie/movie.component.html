@@ -55,7 +55,7 @@
             Category: <span>{{ movie.type }}</span>
           </p>
           <p class="card-title text-primary mb-0">
-            Release date: <span>{{ movie.year | date: 'yyyy' }}</span>
+            Release date: <span>{{ (movie.year.substring(0, 4))  }}</span>
           </p>
 
           <a
