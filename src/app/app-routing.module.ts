@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'movies/:id',
     component: MovieViewComponent,
   },
-  { path: '**', redirectTo: 'movies' }
+  { path: '**', redirectTo: '/' }
 ]
 
 @NgModule({
