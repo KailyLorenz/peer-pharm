@@ -15,8 +15,15 @@
       />
       <div
         *ngIf="errorLoadingMovie[movie.imdbID]"
-        class="bg-dark rounded-start d-flex align-items-center
-          justify-content-center cursor-pointer m-3"
+        class="
+          bg-dark
+          rounded-start
+          d-flex
+          align-items-center
+          justify-content-center
+          cursor-pointer
+          m-3
+        "
         style="width: 150px; height: 200px"
       >
         <p class="text-center text-white">Poster not available</p>
@@ -55,7 +62,7 @@
             Category: <span>{{ movie.type }}</span>
           </p>
           <p class="card-title text-primary mb-0">
-            Release date: <span>{{ (movie.year.substring(0, 4))  }}</span>
+            Release date: <span>{{ movie.year.substring(0, 4) }}</span>
           </p>
 
           <a
