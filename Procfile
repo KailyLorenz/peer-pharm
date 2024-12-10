@@ -1,1 +1,1 @@
-web: http-server dist/peerpharm -p $PORT --proxy
+web: http-server dist/peerpharm -p $PORT -c-1 --fallback index.html
