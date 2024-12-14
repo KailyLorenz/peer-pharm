@@ -73,12 +73,13 @@ export class MovieListComponent implements OnInit, OnDestroy {
         next: ({filteredMoviesBySearch, sortDirection}) => {
           this.filteredMovies = filteredMoviesBySearch
           this.sortDirection = sortDirection
-          this.isLoading = false
         },
         error: (err) => {
           console.error('Error fetching movies:', err)
-          this.isLoading = false
         },
+        complete: () => {
+          this.isLoading = false
+        }
       })
   }
 

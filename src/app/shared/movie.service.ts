@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http'
-import {Injectable} from '@angular/core'
+import {Injectable, OnDestroy} from '@angular/core'
 import {
   BehaviorSubject,
   catchError,
@@ -14,7 +14,7 @@ import {
 import {AccMovie, AngularResponseDB, Movie} from './interfaces'
 
 @Injectable()
-export class MovieService {
+export class MovieService implements OnDestroy{
   movies: Movie[] = []
   private refreshTrigger = new Subject<void>()
   private countTypeMovieSubject = new Subject<AccMovie[]>()
@@ -92,11 +92,6 @@ export class MovieService {
     this.countTypeMovieSubject.next(moviesTypeCount)
   }
 
-  destroy(): void {
-    this.destroy$.next()
-    this.destroy$.complete()
-  }
-
   updateMovie(updatedMovie: Movie): Observable<Movie[]> {
     const updatedMovies = this.moviesSubject.value.map((movie) =>
       movie.imdbID === updatedMovie.imdbID ? updatedMovie : movie
@@ -115,5 +110,10 @@ export class MovieService {
         })
       )
     return this.movies$
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next()
+    this.destroy$.complete()
   }
 }
